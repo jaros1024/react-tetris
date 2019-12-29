@@ -1,7 +1,9 @@
 import React from 'react';
-import gameStore from '../stores/GameStore';
+import mainStore from '../stores/MainStore';
+import { observer } from 'mobx-react';
 
 
+@observer
 class MainMenu extends React.Component {
     render() {
         const menuStyle = {
@@ -25,7 +27,7 @@ class MainMenu extends React.Component {
         return <div>
             <div style={{textAlign: 'center'}}><img src="tetris.png" alt="logo" height="25%" width="25%"/></div>
             <div style={{textAlign: 'center'}}><div style={menuStyle}>
-                <div style={btnStyle} onClick={() => gameStore.startGame()}>New Game</div>
+                <div style={btnStyle} onClick={() => mainStore.startGame()}>New Game</div>
             </div></div>
         </div>;
     }

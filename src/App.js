@@ -1,9 +1,12 @@
 import React from 'react';
 import MainMenu from './components/MainMenu';
-import gameStore from './stores/GameStore';
-import './App.css';
+import mainStore from './stores/MainStore';
+import { observer } from 'mobx-react';
+import GameBoard from './components/GameBoard';
+import 'index.css';
 
 
+@observer
 class App extends React.Component {
     render() {
         const mainStyle = {
@@ -15,7 +18,8 @@ class App extends React.Component {
         };
 
         return <div style={mainStyle}>
-            {gameStore.isMenu && <MainMenu/>}
+            {mainStore.isMenu && <MainMenu/>}
+            {!mainStore.isMenu && <GameBoard/>}
         </div>
     }
 }
