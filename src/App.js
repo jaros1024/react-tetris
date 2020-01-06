@@ -1,8 +1,10 @@
 import React from 'react';
 import MainMenu from './components/MainMenu';
 import mainStore from './stores/MainStore';
+import {VIEWS} from './stores/MainStore';
 import { observer } from 'mobx-react';
 import GameBoard from './components/GameBoard';
+import TopScores from './components/TopScores';
 import 'index.css';
 
 
@@ -18,8 +20,9 @@ class App extends React.Component {
         };
 
         return <div style={mainStyle}>
-            {mainStore.isMenu && <MainMenu/>}
-            {!mainStore.isMenu && <GameBoard/>}
+            {mainStore.visible == VIEWS.MAIN_MENU && <MainMenu/>}
+            {mainStore.visible == VIEWS.GAME_BOARD && <GameBoard/>}
+            {mainStore.visible == VIEWS.TOP_SCORES && <TopScores scores={mainStore.topScores}/>}
         </div>
     }
 }

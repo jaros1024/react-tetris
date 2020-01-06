@@ -1,4 +1,4 @@
-import {toJS} from 'mobx';
+import {action, toJS} from 'mobx';
 
 
 class SharedStore {
@@ -8,6 +8,7 @@ class SharedStore {
         this._initialState = toJS(this);
     }
 
+    @action
     reset() {
         for (let key in this._initialState) {
             if (key != "_initialState") {
